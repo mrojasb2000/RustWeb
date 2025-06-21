@@ -33,15 +33,15 @@ impl Human {
 }
 
 fn main() {
-    let another_developer = Human::new("John Doe", 25);
+    // let another_developer = Human::new("John Doe", 25);
 
     let developer = Human::new("Maxwell Flitton", 32)
-        .with_friend(Box::new(another_developer))
+        .with_friend(Box::new(Human::new("John Doe", 25)))
         .with_thought("I love Rust!");
 
     match &developer.friend {
         Friend::HUMAN(data) => {
-            println!("{}", data.name);
+            println!("{:?}", data);
         }
         Friend::NIL => {}
     }
