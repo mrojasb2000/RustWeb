@@ -39,6 +39,16 @@ fn main() {
         .with_friend(Box::new(Human::new("John Doe", 25)))
         .with_thought("I love Rust!");
 
+    // println!("{Name:}", developer.name);
+    // println!("{Age:}", developer.age);
+    // println!(
+    //     "{Thought:}",
+    //     match developer.current_thought {
+    //         Some(thought) => thought,
+    //         None => "No thought".to_string(),
+    //     }
+    // );
+    println!("{:?}", developer);
     match &developer.friend {
         Friend::HUMAN(data) => {
             println!("{:?}", data);
