@@ -1,3 +1,4 @@
+use clap::{App, Arg};
 use rand::prelude::*;
 use std::env;
 
@@ -16,6 +17,48 @@ fn generate_float(generator: &mut ThreadRng) -> f64 {
 }
 
 fn main() {
+    let app = App::new("booking")
+        .version("1.0.0")
+        .author("Maxwell Flitton")
+        .about("Books in a user");
+
+    let first_name = Arg::new("first name of user")
+        .long("f")
+        .takes_value(true)
+        .required(true)
+        .help("first name of user");
+
+    let last_name = Arg::new("last name of user")
+        .long("l")
+        .takes_value(true)
+        .required(true)
+        .help("last name of user");
+
+    let age = Arg::new("age")
+        .long("a")
+        .takes_value(true)
+        .required(true)
+        .help("age of the user");
+
+    let app = app.arg(first_name).arg(last_name).arg(age);
+    let matches = app.get_matches();
+
+    let name = matches
+        .value_of("first name of user")
+        .expect("First name is required");
+    let surname = matches
+        .value_of("last name of user")
+        .expect("Last name is required");
+    let age: i8 = matches
+        .value_of("age")
+        .expect("Age is required")
+        .parse()
+        .unwrap();
+
+    println!("First name: {}", name);
+    println!("Last name: {}", surname);
+    println!("Age: {}", age);
+
     let mut rng: ThreadRng = rand::rng();
     let random_number = generate_float(&mut rng);
     println!("{}", random_number);
