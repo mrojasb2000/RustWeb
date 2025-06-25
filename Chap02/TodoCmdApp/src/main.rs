@@ -62,16 +62,4 @@ fn main() {
     let mut rng: ThreadRng = rand::rng();
     let random_number = generate_float(&mut rng);
     println!("{}", random_number);
-
-    let args: Vec<String> = env::args().collect();
-    let path: &str = &args[0];
-    println!("{:?}", args);
-
-    if path.contains("/debug/") {
-        println!("Debug is running");
-    } else if path.contains("/release/") {
-        println!("release is running");
-    } else {
-        panic!("The setting is neither debug nor release");
-    }
 }
