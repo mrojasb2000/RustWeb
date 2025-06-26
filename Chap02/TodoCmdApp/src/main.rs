@@ -1,6 +1,5 @@
 use clap::{App, Arg};
 use rand::prelude::*;
-use std::env;
 
 /// This function generates a float number using a number
 /// generator passed into the function.
