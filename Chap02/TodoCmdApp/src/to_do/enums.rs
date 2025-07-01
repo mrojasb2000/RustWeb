@@ -5,6 +5,7 @@ pub enum TaskStatus {
     PENDING,
 }
 
+#[allow(dead_code)]
 impl TaskStatus {
     pub fn stringify(&self) -> String {
         match &self {

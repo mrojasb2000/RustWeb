@@ -1,3 +1,4 @@
+#[allow(dead_code)]
 pub trait Edit {
     fn set_to_done(&self, title: &str) {
         println!("{} is being set to done", title);
