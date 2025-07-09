@@ -8,12 +8,14 @@ async fn greet(req: HttpRequest) -> impl Responder {
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {
     HttpServer::new(|| {
+        println!("Server started at http://127.0.0.1:8000");
         App::new()
             .route("/", web::get().to(greet))
             .route("/{name}", web::get().to(greet))
             .route("/say/hello", web::get().to(|| async { "Hello Again!" }))
     })
     .bind("127.0.0.1:8000")?
+    .workers(3)
     .run()
     .await
 }
