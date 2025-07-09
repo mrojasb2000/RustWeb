@@ -15,7 +15,7 @@ async fn main() -> std::io::Result<()> {
             .route("/say/hello", web::get().to(|| async { "Hello Again!" }))
     })
     .bind("127.0.0.1:8000")?
-    .workers(3)
+    .workers(1)
     .run()
     .await
 }
