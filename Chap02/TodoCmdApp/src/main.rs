@@ -1,14 +1,14 @@
+mod processes;
 mod state;
 mod to_do;
-mod processes;
 
-use serde_json::value::Value;
-use serde_json::{Map, json};
-use state::{read_file, write_to_file};
-use std::env;
-use to_do::to_do_factory;
-use to_do::enums::TaskStatus;
 use processes::process_input;
+use serde_json::Map;
+use serde_json::value::Value;
+use state::read_file;
+use std::env;
+use to_do::enums::TaskStatus;
+use to_do::to_do_factory;
 
 fn main() {
     let args: Vec<String> = env::args().collect();
