@@ -10,8 +10,12 @@ async fn do_something(number: i8) -> i8 {
 
 fn main() {
     let now = time::Instant::now();
-    let future_two = async { return do_something(2).await };
-    let outcome = block_on(future_two);
+    let future_three = async {
+        let outcome_one = do_something(2).await;
+        let outcome_two = do_something(3).await;
+        return outcome_one + outcome_two;
+    };
+    let outcome = block_on(future_three);
     println!("time elapsed: {:?}", now.elapsed());
     println!("Here is the outcome: {}", outcome);
 }
